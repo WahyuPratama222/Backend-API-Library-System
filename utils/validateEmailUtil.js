@@ -1,4 +1,4 @@
-export const validateEmail = (email) => {
+const validateEmail = (email) => {
   const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
   if (!emailRegex.test(email)) {
@@ -7,3 +7,5 @@ export const validateEmail = (email) => {
 
   return null;
 };
+
+export { validateEmail };

@@ -1,45 +1,57 @@
-import { validateId } from "../utils/validateId.js";
-import { validateEmail } from "../utils/validateEmail.js";
+import { validateId } from "../utils/validateIdUtil.js";
+import { validateEmail } from "../utils/validateEmailUtil.js";
+import { validateString, validateEnum } from "../utils/validateDataUtil.js";
 
 const createValidateAnggota = (data) => {
     const { nama_anggota, jenis_kelamin, email } = data;
 
-    if (!nama_anggota || typeof nama_anggota !== "string") {
-        return "Nama anggota wajib diisi dan harus berupa string";
-    }
+    // Nama anggota wajib
+    let err = validateString(nama_anggota, "Nama anggota");
+    if (err) return err;
 
-    if (!["Laki-laki", "Perempuan"].includes(jenis_kelamin)) {
-        return "Jenis kelamin harus 'Laki-laki' atau 'Perempuan'";
-    }
+    // Jenis kelamin wajib dan harus Laki-laki/Perempuan
+    err = validateEnum(jenis_kelamin, "Jenis kelamin", ["Laki-laki", "Perempuan"]);
+    if (err) return err;
 
+    // Email opsional, kalau ada harus valid
     if (email) {
-        const err = validateEmail(email);
-        if (err) return err;
-    }
+        const emailErr = validateEmail(email);
+        if (emailErr) return emailErr;
+    };
 
     return null;
-} 
+};
 
 const updateValidateAnggota = (data, id) => {
+    // Validasi ID
     const errId = validateId(id);
     if (errId) return errId;
 
-    const { nama_anggota, jenis_kelamin, email } = data;
+    const { nama_anggota, jenis_kelamin, email, status_anggota } = data;
 
-    if (nama_anggota && typeof nama_anggota !== "string") {
-        return "Nama harus berupa string";
-    }
+    // Nama anggota opsional
+    const err = validateString(nama_anggota, "Nama anggota", false);
+    if (err) return err;
 
-    if (jenis_kelamin && !["Laki-laki", "Perempuan"].includes(jenis_kelamin)) {
-        return "Jenis kelamin tidak valid";
-    }
 
-    if (email) {
-        const err = validateEmail(email);
+    // Jenis kelamin opsional
+    if (jenis_kelamin !== undefined){
+        const err = validateEnum(jenis_kelamin, "Jenis kelamin", ["Laki-laki", "Perempuan"]);
         if (err) return err;
+    };
+
+    // Email opsional
+    if (email !== undefined) {
+        const emailErr = validateEmail(email);
+        if (emailErr) return emailErr;
+    };
+
+    if (status_anggota !== undefined) {// Opsional, karena defaultnya Aktif}
+        const err = validateEnum(status_anggota, "Status Anggota", ["Aktif", "Tidak Aktif"]);
+        if (err) return err; 
     }
 
     return null;
-}
+};
 
-export {createValidateAnggota, updateValidateAnggota};
+export { createValidateAnggota, updateValidateAnggota };
