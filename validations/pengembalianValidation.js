@@ -1,6 +1,6 @@
 import { validateInt, validateEnum } from "../utils/validateDataUtil";
 
-const createPengembalianValidation = (data) => {
+const createValidatePengembalian = (data) => {
     const {id_peminjaman, id_petugas, status_buku} = data;
 
     const numericFields = [
@@ -13,11 +13,10 @@ const createPengembalianValidation = (data) => {
         if (err) return err;
     };
 
-    // Wajib Diisi
     const err = validateEnum(status_buku, "Status Buku", ["Bagus", "Rusak", "Hilang"]);
     if (err) return err;    
 
     return null;
 };
 
-export { createPengembalianValidation };
+export { createValidatePengembalian };

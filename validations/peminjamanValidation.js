@@ -1,6 +1,6 @@
 import { validateInt } from "../utils/validateDataUtil.js";
 
-const createPeminjamanValidate = (data) => {
+const createValidatePeminjaman = (data) => {
     const { id_buku, id_anggota, id_petugas } = data;
 
     const numericFields = [
@@ -20,4 +20,4 @@ const createPeminjamanValidate = (data) => {
     return null;
 };
 
-export { createPeminjamanValidate };
+export { createValidatePeminjaman };

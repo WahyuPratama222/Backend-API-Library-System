@@ -21,11 +21,31 @@ const createValidatePetugas = (data) => {
     return null;
 };
 
-const updateValidatePetugas = (data, id) => {
+const updateRequiredValidatePetugas = (data, id) => {
     const errId = validateId(id);
     if (errId) return errId;
 
-    const { nama_petugas, username, password, role } = data;
+    const { nama_petugas, username, password } = data;
+
+    const stringFields = [
+        { value: nama_petugas, name: "Nama petugas" },
+        { value: username, name: "Username" },
+        { value: password, name: "password" }
+    ];
+
+    for (const field of stringFields){
+        const err = validateString(field.value, field.name)
+        if (err) return err;
+    };
+
+    return null;
+}; 
+
+const updateOptionalValidatePetugas = (data, id) => {
+   const errId = validateId(id);
+    if (errId) return errId;
+
+    const { nama_petugas, username, password } = data;
 
     const stringFields = [
         { value: nama_petugas, name: "Nama petugas" },
@@ -38,13 +58,7 @@ const updateValidatePetugas = (data, id) => {
         if (err) return err;
     };
 
-    if (role !== undefined){
-        const err = validateEnum(role, "Role", ["Petugas", "Admin"]);
-        if (err) return err;
-    }
-
     return null;
+};
 
-}; 
-
-export { createValidatePetugas, updateValidatePetugas }
+export { createValidatePetugas, updateRequiredValidatePetugas, updateOptionalValidatePetugas }
