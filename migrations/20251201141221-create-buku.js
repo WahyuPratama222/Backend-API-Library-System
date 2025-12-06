@@ -1,40 +1,39 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('buku', {
+    await queryInterface.createTable("buku", {
       id_buku: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: false,
       },
       judul_buku: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       nama_penerbit: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       nama_penulis: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       jumlah_halaman: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       jumlah_buku: {
         type: Sequelize.INTEGER,
-        allowNull: false
-      }
+        allowNull: false,
+      },
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('buku');
-  }
+    await queryInterface.dropTable("buku");
+  },
 };
-

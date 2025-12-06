@@ -13,7 +13,6 @@ app.use("/api/auth", authRoutes);
 app.use(errorHandler);
 
 describe("Integration Test Auth Routes", () => {
-
   test("POST /api/auth/login - Berhasil Login", async () => {
     const res = await request(app)
       .post("/api/auth/login")
