@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
 // ===== Runtime untuk Sequelize CLI =====
@@ -15,7 +15,7 @@ export default {
   test: {
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME + '_test',
+    database: process.env.DB_NAME + "_test",
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
     port: process.env.DB_PORT,
@@ -23,7 +23,7 @@ export default {
   production: {
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME + '_prod',
+    database: process.env.DB_NAME + "_prod",
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
     port: process.env.DB_PORT,

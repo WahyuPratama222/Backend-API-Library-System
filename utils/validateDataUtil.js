@@ -1,59 +1,58 @@
 const validateString = (value, fieldName, required = true) => {
-    if (required) {
-        if (value === undefined || value === null || value === "") {
-            return `${fieldName} wajib diisi`;
-        }
-    } else {
-         if (value === undefined || value === null || value === "") {
-            return null;
-        }
+  if (required) {
+    if (value === undefined || value === null || value === "") {
+      return `${fieldName} wajib diisi`;
     }
-
-    if (typeof value !== "string") {
-        return `${fieldName} harus berupa string`;
+  } else {
+    if (value === undefined || value === null || value === "") {
+      return null;
     }
+  }
 
-    return null;
+  if (typeof value !== "string") {
+    return `${fieldName} harus berupa string`;
+  }
+
+  return null;
 };
 
 const validateEnum = (value, fieldName, allowedValues, required = true) => {
-    if (required) {
-        if (value === undefined || value === null || value === "") {
-            return `${fieldName} wajib diisi`;
-        }
-    } else {
-        if (value === undefined || value === null || value === "") {
-            return null;
-        }
+  if (required) {
+    if (value === undefined || value === null || value === "") {
+      return `${fieldName} wajib diisi`;
     }
-
-    // Cek apakah value termasuk dalam daftar yang diizinkan
-    if (!allowedValues.includes(value)) {
-        return `${fieldName} harus salah satu dari: ${allowedValues.join(", ")}`;
+  } else {
+    if (value === undefined || value === null || value === "") {
+      return null;
     }
+  }
 
-    return null;
+  // Cek apakah value termasuk dalam daftar yang diizinkan
+  if (!allowedValues.includes(value)) {
+    return `${fieldName} harus salah satu dari: ${allowedValues.join(", ")}`;
+  }
+
+  return null;
 };
-
 
 const validateInt = (value, fieldName, required = true) => {
-    if (required) {
-        if (value === undefined || value === null || value === "") {
-            return `${fieldName} wajib diisi`;
-        }
-    } else {
-        if (value === undefined || value === null || value === "") {
-            return null;
-        }
+  if (required) {
+    if (value === undefined || value === null || value === "") {
+      return `${fieldName} wajib diisi`;
     }
-
-    const num = Number(value);
-
-    if (!Number.isInteger(num)) {
-        return `${fieldName} harus berupa integer`;
+  } else {
+    if (value === undefined || value === null || value === "") {
+      return null;
     }
+  }
 
-    return null;
+  const num = Number(value);
+
+  if (!Number.isInteger(num)) {
+    return `${fieldName} harus berupa integer`;
+  }
+
+  return null;
 };
 
-export { validateString, validateEnum, validateInt }; 
+export { validateString, validateEnum, validateInt };
