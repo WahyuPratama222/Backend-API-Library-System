@@ -11,7 +11,7 @@ module.exports = {
           nama_penerbit: "Gramedia",
           nama_penulis: "Eka Kurniawan",
           jumlah_halaman: 185,
-          jumlah_buku: 1,
+          jumlah_buku: 8,
         },
         {
           judul_buku: "86",

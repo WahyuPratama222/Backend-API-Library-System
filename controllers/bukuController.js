@@ -57,7 +57,7 @@ const patchBuku = async (req, res, next) => {
 const deleteBuku = async (req, res, next) => {
   try {
     const buku = await deleteBukuService(req.params.id);
-    res.status(200).json(buku);
+    res.status(200).json({ message: "Deleted", data: buku });
   } catch (err) {
     next(err);
   }

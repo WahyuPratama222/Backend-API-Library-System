@@ -57,7 +57,7 @@ const patchPetugas = async (req, res, next) => {
 const deletePetugas = async (req, res, next) => {
   try {
     const petugas = await deletePetugasService(req.params.id);
-    res.status(200).json(petugas);
+    res.status(200).json({ message: "Deleted", data: petugas });
   } catch (err) {
     next(err);
   }

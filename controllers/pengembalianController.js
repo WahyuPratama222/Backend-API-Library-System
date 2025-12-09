@@ -35,7 +35,7 @@ const getPengembalianById = async (req, res, next) => {
 const deletePengembalian = async (req, res, next) => {
   try {
     const pengembalian = await deletePengembalianService(req.params.id);
-    res.status(200).json(pengembalian);
+    res.status(200).json({ message: "Deleted", data: pengembalian });
   } catch (err) {
     next(err);
   }

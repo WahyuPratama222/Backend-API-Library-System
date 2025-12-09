@@ -35,7 +35,7 @@ const getPeminjamanById = async (req, res, next) => {
 const deletePeminjaman = async (req, res, next) => {
   try {
     const peminjaman = await deletePeminjamanService(req.params.id);
-    res.status(200).json(peminjaman);
+    res.status(200).json({ message: "Deleted", data: peminjaman });
   } catch (err) {
     next(err);
   }

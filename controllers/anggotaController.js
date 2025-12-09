@@ -57,7 +57,7 @@ const patchAnggota = async (req, res, next) => {
 const deleteAnggota = async (req, res, next) => {
   try {
     const anggota = await deleteAnggotaService(req.params.id);
-    res.status(200).json(anggota);
+    res.status(200).json({ message: "Deleted", data: anggota });
   } catch (err) {
     next(err);
   }

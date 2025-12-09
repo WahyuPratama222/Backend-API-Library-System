@@ -12,6 +12,12 @@ module.exports = {
           status_buku: "Bagus",
           tanggal_pengembalian: new Date(),
         },
+        {
+          id_peminjaman: 3,
+          id_petugas: 4,
+          status_buku: "Bagus",
+          tanggal_pengembalian: new Date(),
+        },
       ],
       {}
     );

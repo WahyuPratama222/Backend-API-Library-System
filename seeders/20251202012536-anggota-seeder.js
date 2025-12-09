@@ -33,6 +33,15 @@ module.exports = {
           email: "sherla@gmail.com",
           status_anggota: "Tidak Aktif",
         },
+        {
+          nama_anggota: "Susanto",
+          jenis_kelamin: "Laki-laki",
+          alamat: "JL Sukro 03",
+          no_telp: "08289991229",
+          tanggal_daftar: new Date(),
+          email: "susantooo@gmail.com",
+          status_anggota: "Aktif",
+        },
       ],
       {}
     );

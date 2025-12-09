@@ -18,13 +18,19 @@ module.exports = {
           nama_petugas: "Ani",
           username: "AniAdmin",
           password: await bcrypt.hash("admin456", 10),
-          role: "Admin",
+          role: "Petugas",
         },
         {
           nama_petugas: "Budi",
           username: "BudiPetugas",
           password: await bcrypt.hash("budi789", 10),
           role: "Petugas",
+        },
+        {
+          nama_petugas: "Reno",
+          username: "Renosijgo",
+          password: await bcrypt.hash("reno121", 10),
+          role: "Admin",
         },
       ],
       {}

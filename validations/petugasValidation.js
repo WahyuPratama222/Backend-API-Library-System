@@ -21,10 +21,7 @@ const createValidatePetugas = (data) => {
   return null;
 };
 
-const updateRequiredValidatePetugas = (data, id) => {
-  const errId = validateId(id);
-  if (errId) return errId;
-
+const updateRequiredValidatePetugas = (data) => {
   const { nama_petugas, username, password } = data;
 
   const stringFields = [
@@ -41,10 +38,7 @@ const updateRequiredValidatePetugas = (data, id) => {
   return null;
 };
 
-const updateOptionalValidatePetugas = (data, id) => {
-  const errId = validateId(id);
-  if (errId) return errId;
-
+const updateOptionalValidatePetugas = (data) => {
   const { nama_petugas, username, password } = data;
 
   const stringFields = [

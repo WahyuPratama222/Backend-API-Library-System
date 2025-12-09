@@ -22,6 +22,22 @@ module.exports = {
           status_pinjam: "Dipinjam",
           tanggal_pengembalian: null,
         },
+        {
+          id_buku: 1,
+          id_anggota: 2,
+          id_petugas: 4,
+          tanggal_peminjaman: new Date(),
+          status_pinjam: "Dipinjam",
+          tanggal_pengembalian: null,
+        },
+        {
+          id_buku: 1,
+          id_anggota: 4,
+          id_petugas: 1,
+          tanggal_peminjaman: new Date(),
+          status_pinjam: "Dipinjam",
+          tanggal_pengembalian: null,
+        },
       ],
       {}
     );
