@@ -1,16 +1,5 @@
 import request from "supertest";
-import express from "express";
-import authRoutes from "../routes/authRoutes.js";
-import dotenv from "dotenv";
-import { errorHandler } from "../middlewares/errorHandler.js";
-
-dotenv.config();
-
-const app = express();
-app.use(express.json());
-app.use("/api/auth", authRoutes);
-
-app.use(errorHandler);
+import app from "../app.js";
 
 describe("Integration Test Auth Routes", () => {
   test("POST /api/auth/login - Berhasil Login", async () => {
@@ -33,7 +22,6 @@ describe("Integration Test Auth Routes", () => {
   });
 
   test("GET /api/auth/me - Testing Token", async () => {
-    // pertama login untuk dapat token
     const login = await request(app)
       .post("/api/auth/login")
       .send({ username: "MulyadiKeceeee", password: "password123" });

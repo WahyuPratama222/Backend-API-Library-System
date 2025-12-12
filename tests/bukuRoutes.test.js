@@ -1,16 +1,5 @@
 import request from "supertest";
-import express from "express";
-import bukuRoutes from "../routes/bukuRoutes.js";
-import dotenv from "dotenv";
-import { errorHandler } from "../middlewares/errorHandler.js";
-
-dotenv.config();
-
-const app = express();
-app.use(express.json());
-app.use("/api/buku", bukuRoutes);
-
-app.use(errorHandler);
+import app from "../app.js";
 
 describe("Intergration Test Buku Routes", () => {
   test("POST /api/buku - Berhasil Membuat Buku", async () => {
