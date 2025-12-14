@@ -17,7 +17,7 @@ jobs:
         image: mysql:8
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: perpus_test
+          MYSQL_DATABASE: perpus 
         ports:
           - 3306:3306
         options: >-
@@ -38,11 +38,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # ===== Setup .env tanpa indent spasi =====
-      - name: Copy test env
-        run: cp .env.test .env
+      - name: Setup test env
+        run: |
+          echo "DB_NAME=perpus" >> .env
+          echo "DB_USER=root" >> .env
+          echo "DB_PASSWORD=root" >> .env
+          echo "DB_HOST=127.0.0.1" >> .env
+          echo "DB_PORT=3306" >> .env
+          echo "DB_DIALECT=mysql" >> .env
+          echo "JWT_SECRET=test-secret" >> .env
 
-      # ===== Tunggu MySQL siap =====
       - name: Wait for MySQL
         run: |
           for i in {1..30}; do
@@ -54,19 +59,11 @@ jobs:
             sleep 2
           done
 
-      # ===== Migration & seed pakai NODE_ENV=test =====
       - name: Run migration
         run: npm run db:migrate
-        env:
-          NODE_ENV: test
 
       - name: Run seed
         run: npm run db:seed
-        env:
-          NODE_ENV: test
 
-      # ===== Jalankan Jest di test environment =====
       - name: Run tests
         run: npm test
-        env:
-          NODE_ENV: test
