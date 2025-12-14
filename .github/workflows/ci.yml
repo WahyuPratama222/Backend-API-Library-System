@@ -40,7 +40,7 @@ jobs:
 
       - name: Setup test env
         run: |
-          echo "DB_NAME=perpus_test" >> .env
+          echo "DB_NAME=perpus" >> .env
           echo "DB_USER=root" >> .env
           echo "DB_PASSWORD=root" >> .env
           echo "DB_HOST=127.0.0.1" >> .env
