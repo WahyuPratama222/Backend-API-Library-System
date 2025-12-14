@@ -38,20 +38,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Setup test env
-        run: |
-          cat <<EOF >> .env
-          DB_NAME=perpus
-          DB_USER=root
-          DB_PASSWORD=root
-          DB_HOST=127.0.0.1
-          DB_PORT=3306
-          DB_DIALECT=mysql
-          NODE_ENV=test
-          JWT_SECRET=test-secret
-          EOF
+      # ===== Setup .env tanpa indent spasi =====
+      - name: Copy test env
+        run: cp .env.test .env
 
-
+      # ===== Tunggu MySQL siap =====
       - name: Wait for MySQL
         run: |
           for i in {1..30}; do
@@ -63,6 +54,7 @@ jobs:
             sleep 2
           done
 
+      # ===== Migration & seed pakai NODE_ENV=test =====
       - name: Run migration
         run: npm run db:migrate
         env:
@@ -73,6 +65,7 @@ jobs:
         env:
           NODE_ENV: test
 
+      # ===== Jalankan Jest di test environment =====
       - name: Run tests
         run: npm test
         env:
