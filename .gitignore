@@ -21,7 +21,6 @@ build/
 
 # Sequelize
 .sequelize-meta.json
-.sequelizerc
 
 # OS
 .DS_Store

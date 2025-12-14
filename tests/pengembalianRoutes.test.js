@@ -1,16 +1,5 @@
 import request from "supertest";
-import express from "express";
-import pengembalianRoutes from "../routes/pengembalianRoutes.js";
-import dotenv from "dotenv";
-import { errorHandler } from "../middlewares/errorHandler.js";
-
-dotenv.config();
-
-const app = express();
-app.use(express.json());
-app.use("/api/pengembalian", pengembalianRoutes);
-
-app.use(errorHandler);
+import app from "../app.js";
 
 describe("Intergration Test Pengembalian Routes", () => {
   test("POST /api/pengembalian - Berhasil Membuat Pengembalian", async () => {

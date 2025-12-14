@@ -1,16 +1,5 @@
 import request from "supertest";
-import express from "express";
-import anggotaRoutes from "../routes/anggotaRoutes.js";
-import dotenv from "dotenv";
-import { errorHandler } from "../middlewares/errorHandler.js";
-
-dotenv.config();
-
-const app = express();
-app.use(express.json());
-app.use("/api/anggota", anggotaRoutes);
-
-app.use(errorHandler);
+import app from "../app.js";
 
 describe("Intergration Test Anggota Routes", () => {
   test("POST /api/anggota - Berhasil Membuat Anggota", async () => {

@@ -1,16 +1,5 @@
 import request from "supertest";
-import express from "express";
-import peminjamanRoutes from "../routes/peminjamanRoutes.js";
-import dotenv from "dotenv";
-import { errorHandler } from "../middlewares/errorHandler.js";
-
-dotenv.config();
-
-const app = express();
-app.use(express.json());
-app.use("/api/peminjaman", peminjamanRoutes);
-
-app.use(errorHandler);
+import app from "../app.js";
 
 describe("Intergration Test Peminjaman Routes", () => {
   test("POST /api/peminjaman - Berhasil Membuat Peminjaman", async () => {

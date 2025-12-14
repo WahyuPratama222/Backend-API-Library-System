@@ -1,18 +1,13 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 
-// Load semua model agar Sequelize mendaftarkan mereka
 import "./models/Anggota.js";
 import "./models/Buku.js";
 import "./models/Petugas.js";
 import "./models/Peminjaman.js";
 import "./models/Pengembalian.js";
-
-// Load associations supaya relasi diterapkan SETELAH semua model terdaftar
 import "./models/associations.js";
 
-// Routes
 import anggotaRoutes from "./routes/anggotaRoutes.js";
 import bukuRoutes from "./routes/bukuRoutes.js";
 import petugasRoutes from "./routes/petugasRoutes.js";
@@ -20,8 +15,6 @@ import peminjamanRoutes from "./routes/peminjamanRoutes.js";
 import pengembalianRoutes from "./routes/pengembalianRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
-
-dotenv.config();
 
 const app = express();
 
@@ -35,7 +28,7 @@ app.use(
 
 app.use(express.json());
 
-// Daftar routes
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/anggota", anggotaRoutes);
 app.use("/api/buku", bukuRoutes);
@@ -45,6 +38,4 @@ app.use("/api/pengembalian", pengembalianRoutes);
 
 app.use(errorHandler);
 
-const PORT = process.env.SERVER_PORT || 5000;
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+export default app;
