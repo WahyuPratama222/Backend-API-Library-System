@@ -40,14 +40,17 @@ jobs:
 
       - name: Setup test env
         run: |
-          echo "DB_NAME=perpus" >> .env
-          echo "DB_USER=root" >> .env
-          echo "DB_PASSWORD=root" >> .env
-          echo "DB_HOST=127.0.0.1" >> .env
-          echo "DB_PORT=3306" >> .env
-          echo "DB_DIALECT=mysql" >> .env
-          echo "NODE_ENV=test" >> .env
-          echo "JWT_SECRET=test-secret" >> .env
+          cat <<EOF >> .env
+          DB_NAME=perpus
+          DB_USER=root
+          DB_PASSWORD=root
+          DB_HOST=127.0.0.1
+          DB_PORT=3306
+          DB_DIALECT=mysql
+          NODE_ENV=test
+          JWT_SECRET=test-secret
+          EOF
+
 
       - name: Wait for MySQL
         run: |
@@ -58,9 +61,13 @@ jobs:
 
       - name: Run migration
         run: npm run db:migrate
+        env:
+          NODE_ENV: test
 
       - name: Run seed
         run: npm run db:seed
+        env:
+          NODE_ENV: test
 
       - name: Run tests
         run: npm test
