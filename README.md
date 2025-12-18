@@ -1,6 +1,6 @@
 
 <div align="center">
-  <h1>📚 Library Management System API</h1>
+  <h1> 📕 Library Management System API </h1>
 
   <p>
     <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
@@ -169,22 +169,84 @@ http://localhost:5000/api-docs
 
 ## 📁 6. Struktur Proyek
 
-```text
-Backend-Perpustakaan/
-├── app.js           # Konfigurasi Express (middleware, routes)
-├── server.js        # Entry point server
-├── config/          # Konfigurasi database & swagger
-├── controllers/     # Handler request & response
-├── middlewares/     # Auth middleware, error handler
-├── migrations/      # Migrasi database
-├── models/          # Sequelize models
-├── routes/          # Endpoint API
-├── seeders/         # Data dummy
-├── services/        # Business logic
-├── tests/           # Integration testing
-├── utils/           # Helper functions
-├── validations/     # Validasi input
-└── package.json
+```
+backend/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                 # Pipeline CI GitHub Actions untuk testing & build otomatis
+├── config/
+│   ├── config.cjs                 # Konfigurasi Sequelize CLI (database, environment)
+│   ├── databases.js               # Inisialisasi dan koneksi instance Sequelize
+│   └── swagger.js                 # Konfigurasi Swagger/OpenAPI untuk dokumentasi API
+├── controllers/                   # Controller (penghubung request dan service)
+│   ├── anggotaController.js
+│   ├── authController.js
+│   ├── bukuController.js
+│   ├── peminjamanController.js
+│   ├── pengembalianController.js
+│   └── petugasController.js
+├── middlewares/                   # Middleware Express
+│   ├── authMiddleware.js          # Middleware autentikasi JWT
+│   └── errorHandler.js            # Middleware penanganan error global
+├── migrations/                    # File migrasi database
+│   ├── 1-create-anggota.cjs
+│   ├── 2-create-buku.cjs
+│   ├── 3-create-petugas.cjs
+│   ├── 4-create-peminjaman.cjs
+│   └── 5-create-pengembalian.cjs
+├── models/                        # Model Sequelize (representasi tabel database)
+│   ├── Anggota.js
+│   ├── Buku.js
+│   ├── Peminjaman.js
+│   ├── Pengembalian.js
+│   ├── Petugas.js
+│   └── associations.js            # Relasi antar model (hasMany, belongsTo, dll)
+├── routes/                        # Routing endpoint API
+│   ├── anggotaRoutes.js
+│   ├── authRoutes.js
+│   ├── bukuRoutes.js
+│   ├── peminjamanRoutes.js
+│   ├── pengembalianRoutes.js
+│   └── petugasRoutes.js
+├── seeders/                       # Data awal (dummy/seed) database
+│   ├── 1-anggota-seeder.cjs
+│   ├── 2-buku-seeder.cjs
+│   ├── 3-petugas-seeder.cjs
+│   ├── 4-peminjaman-seeder.cjs
+│   └── 5-pengembalian-seeder.cjs
+├── services/                      # Lapisan logika bisnis (business logic)
+│   ├── anggotaService.js
+│   ├── authService.js
+│   ├── bukuService.js
+│   ├── peminjamanService.js
+│   ├── pengembalianService.js
+│   └── petugasService.js
+├── tests/                         # Pengujian integrasi endpoint API
+│   ├── anggotaRoutes.test.js
+│   ├── authRoutes.test.js
+│   ├── bukuRoutes.test.js
+│   ├── peminjamanRoutes.test.js
+│   ├── pengembalianRoutes.test.js
+│   └── petugasRoutes.test.js
+├── utils/                         # Fungsi utilitas/helper
+│   ├── errors/
+│   │   ├── appError.js            # Kelas custom error aplikasi
+│   │   └── errorsUtil.js          # Utilitas pengelolaan error
+│   ├── validateCountUtil.js       # Validasi jumlah data
+│   ├── validateDataUtil.js        # Validasi data umum
+│   ├── validateEmailUtil.js       # Validasi format email
+│   └── validateIdUtil.js          # Validasi ID
+├── validations/                   # Skema validasi input (request body, params, dll)
+│   ├── anggotaValidation.js
+│   ├── authValidation.js
+│   ├── bukuValidation.js
+│   ├── peminjamanValidation.js
+│   ├── pengembalianValidation.js
+│   └── petugasValidation.js
+├── app.js                         # Konfigurasi utama Express (routes)
+├── server.js                      # Entry point aplikasi (menjalankan server)
+└── package.json                   # Daftar dependensi dan script project
+
 ```
 
 ---
@@ -327,6 +389,7 @@ Database (MySQL)
 - Transaction Management untuk proses kritikal
 - Row-Level Locking untuk mencegah race condition
 - Middleware untuk autentikasi & validasi
+- Bcrypt untuk keamanan password petugas
 
 ---
 
@@ -334,6 +397,7 @@ Database (MySQL)
 
 **Wahyu Pratama**  
 GitHub: https://github.com/WahyuPratama222
+Instagram: https://www.instagram.com/wahyu0020?igsh=MWx2ZWt2ajJiNnBlcg==
 
 ---
 
